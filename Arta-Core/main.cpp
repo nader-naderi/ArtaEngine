@@ -1,12 +1,19 @@
 #include <iostream>
 #include <glfw3.h>
+#include "src/graphics/window.h"
 
 int main()
 {
-	if (!glfwInit())
-		std::cout << "Error" << std::endl;
-	else
-		std::cout << "Success" << std::endl;
+	using namespace Arta;
+	using namespace Graphics;
 
+	Window window("Arta", 800, 600);
+
+	while (!window.closed())
+	{
+		window.update();
+	}
+
+	system("PUASE");
 	return 0;
 }
