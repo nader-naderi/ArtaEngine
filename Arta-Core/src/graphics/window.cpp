@@ -54,6 +54,16 @@ namespace Arta {
 			glfwMakeContextCurrent(m_Window);
 			glfwSetWindowSizeCallback(m_Window, windowResize);
 
+			// GLEW
+			if (glewInit() != GLEW_OK)
+			{
+				std::cout << "could not init glew!\n";
+				return false;
+			}
+
+			std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
+
+
 			return true;
 		}
 
