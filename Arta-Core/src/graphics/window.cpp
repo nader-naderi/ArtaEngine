@@ -2,6 +2,11 @@
 
 namespace Arta {
 	namespace Graphics {
+
+		void windowResize(GLFWwindow* window, int width, int height);
+
+
+
 		Window::Window(const char* title, int width, int height)
 		{
 			m_Title = title;
@@ -19,7 +24,7 @@ namespace Arta {
 		void Window::update()
 		{
 			glfwPollEvents();
-			glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
+			//glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
 			glViewport(0, 0, m_Width, m_Height) ;
 			glfwSwapBuffers(m_Window);
 		}
@@ -47,7 +52,7 @@ namespace Arta {
 				return false;
 			}
 			glfwMakeContextCurrent(m_Window);
-
+			glfwSetWindowSizeCallback(m_Window, windowResize);
 
 			return true;
 		}
@@ -55,6 +60,11 @@ namespace Arta {
 		bool Window::closed() const
 		{
 			return glfwWindowShouldClose(m_Window) == 1;
+		}
+
+		void windowResize(GLFWwindow* window, int width, int height)
+		{
+			glViewport(0, 0, width, height);
 		}
 
 	}

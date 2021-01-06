@@ -15,9 +15,10 @@ int main()
 		std::cout << window.getWidth() << ", " << window.getHeight() << std::endl;
 		window.clear();
 		
-		glBegin(GL_TRIANGLES);
+		glBegin(GL_QUADS);
 		glVertex2f(-0.5f, -0.5f);
-		glVertex2f( 0.0f,  0.5f);
+		glVertex2f(-0.5f,  0.5f);
+		glVertex2f( 0.5f,  0.5f);
 		glVertex2f( 0.5f, -0.5f);
 		glEnd();
 
