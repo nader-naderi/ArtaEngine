@@ -25,7 +25,7 @@ namespace Arta {
 		{
 			glfwPollEvents();
 			//glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
-			glViewport(0, 0, m_Width, m_Height) ;
+			//glViewport(0, 0, m_Width, m_Height) ;
 			glfwSwapBuffers(m_Window);
 		}
 
