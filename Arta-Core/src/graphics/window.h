@@ -14,11 +14,18 @@ namespace Arta {
 			GLFWwindow* m_Window;
 			bool m_Closed;
 		public:
+			// Methods
 			Window(const char* name, int width, int height);
 			~Window();
-			void update() const;
+			void update();
 			bool closed() const;
 			void clear() const;
+
+			//Properties
+			inline int getHeight() const { return m_Height; }
+			inline int getWidth() const { return m_Width; }
+
+
 		private:
 			bool init();
 
