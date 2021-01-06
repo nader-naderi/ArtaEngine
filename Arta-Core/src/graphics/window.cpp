@@ -1,5 +1,4 @@
 #include "window.h"
-#include <iostream>
 
 namespace Arta {
 	namespace Graphics {
@@ -24,9 +23,10 @@ namespace Arta {
 		}
 
 		
-		bool Window::closed() const
+
+		void Window::clear() const
 		{
-			return glfwWindowShouldClose(m_Window);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		}
 
 		bool Window::init()
@@ -50,6 +50,10 @@ namespace Arta {
 			return true;
 		}
 
+		bool Window::closed() const
+		{
+			return glfwWindowShouldClose(m_Window) == 1;
+		}
 
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <glfw3.h>
 
 namespace Arta {
@@ -17,6 +18,7 @@ namespace Arta {
 			~Window();
 			void update() const;
 			bool closed() const;
+			void clear() const;
 		private:
 			bool init();
 
