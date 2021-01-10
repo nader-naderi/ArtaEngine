@@ -3,8 +3,8 @@
 namespace Arta {
 	namespace Graphics {
 
-		void windowResize(GLFWwindow* window, int width, int height);
-
+		void window_resize(GLFWwindow* window, int width, int height);
+		static void key_callback(GLFWwindow* window, int key, int scancode, int action, int modes);
 
 
 		Window::Window(const char* title, int width, int height)
@@ -14,6 +14,8 @@ namespace Arta {
 			m_Height = height;
 			if (!init())
 				glfwTerminate();
+		
+			INSTANCE = this;
 		}
 
 		Window::~Window()
@@ -52,7 +54,7 @@ namespace Arta {
 				return false;
 			}
 			glfwMakeContextCurrent(m_Window);
-			glfwSetWindowSizeCallback(m_Window, windowResize);
+			glfwSetWindowSizeCallback(m_Window, window_resize);
 
 			// GLEW
 			if (glewInit() != GLEW_OK)
@@ -72,9 +74,13 @@ namespace Arta {
 			return glfwWindowShouldClose(m_Window) == 1;
 		}
 
-		void windowResize(GLFWwindow* window, int width, int height)
+		void window_resize(GLFWwindow* window, int width, int height)
 		{
 			glViewport(0, 0, width, height);
+		}
+
+		static void key_callback(GLFWwindow* window, int key, int scancode, int action, int modes)
+		{
 		}
 
 	}
